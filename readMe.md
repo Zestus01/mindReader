@@ -69,6 +69,8 @@
 ##### &emsp; Symbols will be in a array 10 different symbols, 0 - 9
 ##### &emsp; if the number is %9 === 0 then assign it the specific character
 ##### &emsp; Loop to 100 to create the pairs and add it the number pair 
+##### &emsp; Will be called at the intialized at the start of the page
+##### &emsp; Symbols will be hard coded but the starting index will be randomized
 
 
 #### reset()
