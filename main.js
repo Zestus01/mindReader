@@ -7,7 +7,7 @@ const pageLayout = {
         pageSet : [],
         symbols : [
             //   0     1    2    3   4    5    6    7    8    9  
-                '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
+                '@', '!', '#', '^', '<', '<', '$',  '}', '{',
             ],
         currPage : 0,
         divisible: '',
@@ -120,14 +120,12 @@ updatePage();
 
 function generateSymbols(){
     let symbolStr = '';
-    let symIndex = 0 //Math.floor(Math.random() * 10);
+    let symIndex = Math.floor(Math.random() * 9);
+    pageLayout.divisible = pageLayout.symbols[symIndex];
     for(let index = 0; index < 100; index++){
         symbolStr += index+': '+pageLayout.symbols[symIndex]+'<br>';
-        //if(index === 9){
-      //      pageLayout.divisible = pageLayout.symbols[symIndex];
-      //  }
         symIndex++;
-        if(symIndex >= 10)
+        if(symIndex >= 9)
             symIndex = 0;
     }
     return symbolStr;
