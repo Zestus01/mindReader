@@ -89,7 +89,7 @@ let page2 = new page (
 )
 
 let page3 = new page (
-    'generateSyblmols', 
+   // generateSymbols(), 
     true,
     'Scroll to find your number <br> Once you found your number hit NEXT',
     true,
@@ -98,7 +98,7 @@ let page3 = new page (
     'Reset'
 )
 let page4 = new page (
-    'IS THIS YOUR SYMBOL <br> &', 
+    'IS THIS YOUR SYMBOL <br> <br> <br> &', 
     true,
     'Haha bet your mind is blown',
     true,
@@ -113,3 +113,22 @@ pageSet.push(page2);
 pageSet.push(page3);
 pageSet.push(page4);
 updatePage();
+
+let symbols = [
+//   0     1    2    3   4    5    6    7    8    9  
+    '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
+]
+
+function generateSymbols(){
+    let symbolStr = '';
+    let index = 0;
+    let symIndex = 0;
+    while(index < 100){
+        symbolStr = symbolStr+index+symbols[symIndex]+'<br>';
+        index++;
+        symIndex++;
+        if(symIndex >= 10)
+            symIndex = 0;
+    }
+    return symbolStr;
+}
