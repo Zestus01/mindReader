@@ -31,14 +31,11 @@ nextBtn.addEventListener('click', () => {
 })
 
 resetBtn.addEventListener('click', () => {
-    if(currPage != 0){
+    if(currPage != 0)
         currPage = 0;
-        resetBtn.textContent = 'GO';
-    }
-    else{
+    else
         currPage = 1;
-        resetBtn.textContent = 'RESET';
-    }
+
     updatePage();
 })
 
