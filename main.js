@@ -95,7 +95,7 @@ let page2 = new page (
 )
 
 let page3 = new page (
-  generateSymbols(),   
+    generateSymbols(),   
     true,
     'Scroll to find your number <br> Once you found your number hit NEXT',
     true,
