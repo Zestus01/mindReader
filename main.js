@@ -3,19 +3,14 @@ const nextBtn = document.getElementById('nextBtn');
 const headerText = document.getElementById('headerText');
 const fillerText = document.getElementById('fillerText');
 
-class pageLayout {
-    constructor(){
-        this.pageSet = [];
-        this.symbols = [
+let pageLayout = {
+        pageSet : [],
+        symbols : [
             //   0     1    2    3   4    5    6    7    8    9  
                 '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
-            ];
-        this.currPage = 0;
-    }
-    
-} 
-
-let pageLayouts = new pageLayout;
+            ],
+        currPage : 0,
+}
 
 class page {
     constructor(head, headBool, fill, fillBool, nextText, nextBool, resetText){
@@ -30,36 +25,36 @@ class page {
 }
 
 nextBtn.addEventListener('click', () => {
-    pageLayouts.currPage++;
+    pageLayout.currPage++;
     updatePage();
 })
 
 resetBtn.addEventListener('click', () => {
-    if(pageLayouts.currPage != 0)
-        pageLayouts.currPage = 0;
+    if(pageLayout.currPage != 0)
+        pageLayout.currPage = 0;
     else
-        pageLayouts.currPage = 1;
+        pageLayout.currPage = 1;
 
     updatePage();
 })
 
 function updatePage(){
-    headerText.innerHTML = pageLayouts.pageSet[pageLayouts.currPage].headText;
-    fillerText.innerHTML = pageLayouts.pageSet[pageLayouts.currPage].fillText;
-    resetBtn.textContent = pageLayouts.pageSet[pageLayouts.currPage].resetText;
-    nextBtn.textContent = pageLayouts.pageSet[pageLayouts.currPage].nextText;
+    headerText.innerHTML = pageLayout.pageSet[pageLayout.currPage].headText;
+    fillerText.innerHTML = pageLayout.pageSet[pageLayout.currPage].fillText;
+    resetBtn.textContent = pageLayout.pageSet[pageLayout.currPage].resetText;
+    nextBtn.textContent = pageLayout.pageSet[pageLayout.currPage].nextText;
     
-    if(pageLayouts.pageSet[pageLayouts.currPage].nextBool)
+    if(pageLayout.pageSet[pageLayout.currPage].nextBool)
         nextBtn.style.display = 'block';
     else
         nextBtn.style.display = 'none';
 
-    if(pageLayouts.pageSet[pageLayouts.currPage].headBool)
+    if(pageLayout.pageSet[pageLayout.currPage].headBool)
         headerText.style.display = 'block';
     else
         headerText.style.display = 'none';
 
-    if(pageLayouts.pageSet[pageLayouts.currPage].fillBool)
+    if(pageLayout.pageSet[pageLayout.currPage].fillBool)
         fillerText.style.display = 'block';
     else
         fillerText.style.display = 'none';
@@ -114,11 +109,11 @@ let page4 = new page (
     'Reset'
 )
 
-pageLayouts.pageSet.push(page0);
-pageLayouts.pageSet.push(page1);
-pageLayouts.pageSet.push(page2);
-pageLayouts.pageSet.push(page3);
-pageLayouts.pageSet.push(page4);
+pageLayout.pageSet.push(page0);
+pageLayout.pageSet.push(page1);
+pageLayout.pageSet.push(page2);
+pageLayout.pageSet.push(page3);
+pageLayout.pageSet.push(page4);
 updatePage();
 
 
@@ -126,7 +121,7 @@ function generateSymbols(){
     let symbolStr = '';
     let symIndex = 0;
     for(let index = 0; index < 100; index++){
-        symbolStr += index+': '+pageLayouts.symbols[symIndex]+'<br>';
+        symbolStr += index+': '+pageLayout.symbols[symIndex]+'<br>';
         symIndex++;
         if(symIndex >= 10)
             symIndex = 0;
