@@ -12,7 +12,7 @@ const pageLayout = {
         currPage : 0,
 }
 
-class page {
+class Page {
     constructor(head, headBool, fill, fillBool, nextText, nextBool, resetText){
         this.headText = head;
         this.fillText = fill;
@@ -60,7 +60,7 @@ function updatePage(){
         fillerText.style.display = 'none';
 }
 
-let page0 = new page (
+let page0 = new Page (
     'Choose a number from 1 to 99, hit GO to continue', 
     true,
     'Your mind is about to be blown',
@@ -70,7 +70,7 @@ let page0 = new page (
     'GO'
 )
 
-let page1 = new page (
+let page1 = new Page (
     'ADD the two digits together', 
     true,
     'EX: 16 is 1 + 6 = 7',
@@ -80,7 +80,7 @@ let page1 = new page (
     'Reset'
 )
 
-let page2 = new page (
+let page2 = new Page (
     'SUBTRACT your new number from your original number', 
     true,
     'EX: 16 - 7 = 9',
@@ -90,7 +90,7 @@ let page2 = new page (
     'Reset'
 )
 
-let page3 = new page (
+let page3 = new Page (
     generateSymbols(),   
     true,
     'Scroll to find your number <br> Once you found your number hit NEXT',
@@ -99,7 +99,7 @@ let page3 = new page (
     true,
     'Reset'
 )
-let page4 = new page (
+let page4 = new Page (
     'IS THIS YOUR SYMBOL <br> <br> <br> &', 
     true,
     'Haha bet your mind is blown',
