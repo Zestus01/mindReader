@@ -3,7 +3,7 @@ const nextBtn = document.getElementById('nextBtn');
 const headerText = document.getElementById('headerText');
 const fillerText = document.getElementById('fillerText');
 
-let pageLayout = {
+const pageLayout = {
         pageSet : [],
         symbols : [
             //   0     1    2    3   4    5    6    7    8    9  
