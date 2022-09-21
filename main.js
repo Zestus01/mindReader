@@ -37,8 +37,8 @@ resetBtn.addEventListener('click', () => {
 })
 
 function updatePage(){
-    headerText.textContent = pageSet[currPage].headText;
-    fillerText.textContent = pageSet[currPage].fillText;
+    headerText.innerHTML = pageSet[currPage].headText;
+    fillerText.innerHTML = pageSet[currPage].fillText;
     resetBtn.textContent = pageSet[currPage].resetText;
     nextBtn.textContent = pageSet[currPage].nextText;
     
@@ -69,24 +69,47 @@ let page0 = new page (
 )
 
 let page1 = new page (
-    'Choose a number from 1 to 99, hit go to continue', 
+    'ADD the two digits together', 
     true,
-    'Your mind is about to be blown',
+    'EX: 16 is 1 + 6 = 7',
     true,
     'NEXT',
     true,
     'Reset'
 )
+
 let page2 = new page (
-    'Choose a number from 1 to 99, hit go to continue', 
+    'SUBTRACT your new number from your original number', 
     true,
-    'Your mind is about to be blown',
+    'EX: 16 - 7 = 9',
     true,
     'NEXT',
     true,
     'Reset'
 )
+
+let page3 = new page (
+    'generateSyblmols', 
+    true,
+    'Scroll to find your number <br> Once you found your number hit NEXT',
+    true,
+    'NEXT',
+    true,
+    'Reset'
+)
+let page4 = new page (
+    'IS THIS YOUR SYMBOL <br> &', 
+    true,
+    'Haha bet your mind is blown',
+    true,
+    'NEXT',
+    false,
+    'Reset'
+)
+
 pageSet.push(page0);
 pageSet.push(page1);
 pageSet.push(page2);
+pageSet.push(page3);
+pageSet.push(page4);
 updatePage();
