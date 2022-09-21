@@ -10,6 +10,7 @@ const pageLayout = {
                 '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
             ],
         currPage : 0,
+        divisible: '',
 }
 
 class Page {
@@ -100,7 +101,7 @@ let page3 = new Page (
     'Reset'
 )
 let page4 = new Page (
-    'IS THIS YOUR SYMBOL <br> <br> <br> &', 
+    'IS THIS YOUR SYMBOL <br> <br> <br>'+pageLayout.divisible, 
     true,
     'Haha bet your mind is blown',
     true,
@@ -119,9 +120,12 @@ updatePage();
 
 function generateSymbols(){
     let symbolStr = '';
-    let symIndex = 0;
+    let symIndex = 0 //Math.floor(Math.random() * 10);
     for(let index = 0; index < 100; index++){
         symbolStr += index+': '+pageLayout.symbols[symIndex]+'<br>';
+        //if(index === 9){
+      //      pageLayout.divisible = pageLayout.symbols[symIndex];
+      //  }
         symIndex++;
         if(symIndex >= 10)
             symIndex = 0;
