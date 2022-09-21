@@ -5,6 +5,12 @@ const fillerText = document.getElementById('fillerText');
 
 let pageSet = [];
 
+let symbols = [
+    //   0     1    2    3   4    5    6    7    8    9  
+        '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
+    ]
+    
+
 class page {
     constructor(head, headBool, fill, fillBool, nextText, nextBool, resetText){
         this.headText = head;
@@ -89,7 +95,7 @@ let page2 = new page (
 )
 
 let page3 = new page (
-   // generateSymbols(), 
+  generateSymbols(),   
     true,
     'Scroll to find your number <br> Once you found your number hit NEXT',
     true,
@@ -114,18 +120,12 @@ pageSet.push(page3);
 pageSet.push(page4);
 updatePage();
 
-let symbols = [
-//   0     1    2    3   4    5    6    7    8    9  
-    '@', '!', '#', '^', '<', '<', '$',  '}', '{',  '&'
-]
 
 function generateSymbols(){
     let symbolStr = '';
-    let index = 0;
     let symIndex = 0;
-    while(index < 100){
-        symbolStr = symbolStr+index+symbols[symIndex]+'<br>';
-        index++;
+    for(let index = 0; index < 100; index++){
+        symbolStr += index+': '+symbols[symIndex]+'<br>';
         symIndex++;
         if(symIndex >= 10)
             symIndex = 0;
