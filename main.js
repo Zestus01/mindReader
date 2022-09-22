@@ -6,39 +6,43 @@ const fillerText = document.getElementById('fillerText');
 const pageLayout = {
         pageSet : [],
         symbols : [
-            //   0     1    2    3   4    5    6    7    8    9  
-                '@', '!', '#', '^', '<', '<', '$',  '}', '{',
+                    '@',  //0
+                    '!',  //1
+                    '#',  //2
+                    '^',  //3
+                    '<',  //4
+                    '<',  //5
+                    '$',  //6
+                    '}',  //7
+                    '{',  //8
             ],
         currPage : 0,
         divisible: '',
 }
 
 class Page {
-    constructor(head, headBool, fill, fillBool, nextText, nextBool, resetText){
+    constructor(head, fill, nextText, nextBool, resetText){
         this.headText = head;
         this.fillText = fill;
         this.nextText = nextText;
         this.resetText = resetText;
         this.nextBool = nextBool;
-        this.headBool = headBool;
-        this.fillBool = fillBool;
     }
 }
 
+// If the next button is clicked and increases the page count by 1
 nextBtn.addEventListener('click', () => {
-    pageLayout.currPage++;
+    pageLayout.currPage += 1;
     updatePage();
 })
+
 
 resetBtn.addEventListener('click', () => {
-    if(pageLayout.currPage != 0)
-        pageLayout.currPage = 0;
-    else
-        pageLayout.currPage = 1;
-
+    (pageLayout.currPage != 0) ? pageLayout.currPage = 0 : pageLayout.currPage = 1;
     updatePage();
 })
 
+// Sets the page layout text and hides the next button.
 function updatePage(){
     headerText.innerHTML = pageLayout.pageSet[pageLayout.currPage].headText;
     fillerText.innerHTML = pageLayout.pageSet[pageLayout.currPage].fillText;
@@ -49,81 +53,66 @@ function updatePage(){
         nextBtn.style.display = 'block';
     else
         nextBtn.style.display = 'none';
-
-    if(pageLayout.pageSet[pageLayout.currPage].headBool)
-        headerText.style.display = 'block';
-    else
-        headerText.style.display = 'none';
-
-    if(pageLayout.pageSet[pageLayout.currPage].fillBool)
-        fillerText.style.display = 'block';
-    else
-        fillerText.style.display = 'none';
 }
 
+
+// Creating the pages and pushing it the page[]
 let page0 = new Page (
-    'Choose a number from 1 to 99, hit GO to continue', 
-    true,
+    'Choose a number from 1 to 99, hit GO to continue',
     'Your mind is about to be blown',
-    true,
     '',
     false,
     'GO'
 )
+pageLayout.pageSet.push(page0);
 
 let page1 = new Page (
-    'ADD the two digits together', 
-    true,
+    'ADD the two digits together',
     'EX: 16 is 1 + 6 = 7',
-    true,
     'NEXT',
     true,
     'Reset'
 )
+pageLayout.pageSet.push(page1);
 
 let page2 = new Page (
-    'SUBTRACT your new number from your original number', 
-    true,
+    'SUBTRACT your new number from your original number',
     'EX: 16 - 7 = 9',
-    true,
     'NEXT',
     true,
     'Reset'
 )
+pageLayout.pageSet.push(page2);
 
 let page3 = new Page (
     generateSymbols(),   
-    true,
     'Scroll to find your number <br> Once you found your number hit NEXT',
-    true,
     'NEXT',
     true,
     'Reset'
 )
+pageLayout.pageSet.push(page3);
+
 let page4 = new Page (
-    'IS THIS YOUR SYMBOL <br> <br> <br>'+pageLayout.divisible, 
-    true,
+    'IS THIS YOUR SYMBOL <br> <br> <br>' + pageLayout.divisible,
     'Haha bet your mind is blown',
-    true,
     'NEXT',
     false,
     'Reset'
 )
-
-pageLayout.pageSet.push(page0);
-pageLayout.pageSet.push(page1);
-pageLayout.pageSet.push(page2);
-pageLayout.pageSet.push(page3);
 pageLayout.pageSet.push(page4);
+
 updatePage();
 
-
+// Generates the symbol array and returns the scrambles string
+// Sets the divisible symbol to "read" the mind of the user
 function generateSymbols(){
     let symbolStr = '';
     let symIndex = Math.floor(Math.random() * 9);
     pageLayout.divisible = pageLayout.symbols[symIndex];
+    // Populates the array of strings and gives a symbol to it
     for(let index = 0; index < 100; index++){
-        symbolStr += index+': '+pageLayout.symbols[symIndex]+'<br>';
+        symbolStr += index + ' : ' + pageLayout.symbols[symIndex] + '<br>';
         symIndex++;
         if(symIndex >= 9)
             symIndex = 0;
