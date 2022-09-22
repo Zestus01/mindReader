@@ -2,6 +2,9 @@ const resetBtn = document.getElementById('resetBtn');
 const nextBtn = document.getElementById('nextBtn');
 const headerText = document.getElementById('headerText');
 const fillerText = document.getElementById('fillerText');
+const backBtn = document.getElementById('backBtn');
+
+backBtn.textContent = 'Back';
 
 const pageLayout = {
         pageSet : [],
@@ -21,12 +24,13 @@ const pageLayout = {
 }
 
 class Page {
-    constructor(head, fill, nextText, nextBool = true, resetText = 'Reset'){
+    constructor(head, fill, nextText, nextBool = true, resetText = 'Reset', backBool = true,){
         this.headText = head;
         this.fillText = fill;
         this.nextText = nextText;
         this.resetText = resetText;
         this.nextBool = nextBool;
+        this.backBool = backBool;
     }
 }
 
@@ -34,13 +38,23 @@ class Page {
 nextBtn.addEventListener('click', () => {
     pageLayout.currPage += 1;
     updatePage();
-})
+});
+
+backBtn.addEventListener('click', () => {
+    pageLayout.currPage -= 1;
+    updatePage();
+});
 
 
 resetBtn.addEventListener('click', () => {
     pageLayout.currPage = (pageLayout.currPage != 0) ? 0 : 1;
+    // Resets the number without refreshing the page
+    if(pageLayout.currPage === 0){
+        pageLayout.pageSet[3].headText = generateSymbols();
+        pageLayout.pageSet[4].headText = 'IS THIS YOUR SYMBOL <br> <br> <br>' + pageLayout.divisible;
+    }
     updatePage();
-})
+});
 
 // Sets the page layout text and hides the next button.
 function updatePage(){
@@ -53,6 +67,12 @@ function updatePage(){
         nextBtn.style.display = 'block';
     else
         nextBtn.style.display = 'none';
+
+    if(pageLayout.pageSet[pageLayout.currPage].backBool)
+        backBtn.style.display = 'block';
+    else
+        backBtn.style.display = 'none';
+
 }
 
 
@@ -62,7 +82,8 @@ let page0 = new Page (
     'Your mind is about to be blown',
     '',
     false,
-    'GO'
+    'GO',
+    false
 )
 pageLayout.pageSet.push(page0);
 
