@@ -10,7 +10,7 @@ const pageLayout = {
                     '!',  //1
                     '#',  //2
                     '^',  //3
-                    '<',  //4
+                    '>',  //4
                     '<',  //5
                     '$',  //6
                     '}',  //7
@@ -21,7 +21,7 @@ const pageLayout = {
 }
 
 class Page {
-    constructor(head, fill, nextText, nextBool, resetText){
+    constructor(head, fill, nextText, nextBool = true, resetText = 'Reset'){
         this.headText = head;
         this.fillText = fill;
         this.nextText = nextText;
@@ -38,7 +38,7 @@ nextBtn.addEventListener('click', () => {
 
 
 resetBtn.addEventListener('click', () => {
-    (pageLayout.currPage != 0) ? pageLayout.currPage = 0 : pageLayout.currPage = 1;
+    pageLayout.currPage = (pageLayout.currPage != 0) ? 0 : 1;
     updatePage();
 })
 
@@ -70,8 +70,6 @@ let page1 = new Page (
     'ADD the two digits together',
     'EX: 16 is 1 + 6 = 7',
     'NEXT',
-    true,
-    'Reset'
 )
 pageLayout.pageSet.push(page1);
 
@@ -79,8 +77,6 @@ let page2 = new Page (
     'SUBTRACT your new number from your original number',
     'EX: 16 - 7 = 9',
     'NEXT',
-    true,
-    'Reset'
 )
 pageLayout.pageSet.push(page2);
 
@@ -88,8 +84,6 @@ let page3 = new Page (
     generateSymbols(),   
     'Scroll to find your number <br> Once you found your number hit NEXT',
     'NEXT',
-    true,
-    'Reset'
 )
 pageLayout.pageSet.push(page3);
 
@@ -98,7 +92,6 @@ let page4 = new Page (
     'Haha bet your mind is blown',
     'NEXT',
     false,
-    'Reset'
 )
 pageLayout.pageSet.push(page4);
 
