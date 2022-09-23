@@ -37,6 +37,7 @@ class Page {
 // If the next button is clicked and increases the page count by 1
 nextBtn.addEventListener('click', () => {
     pageLayout.currPage += 1;
+    localStorage.setItem(pageLayout.currPage, )
     updatePage();
 });
 
