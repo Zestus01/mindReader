@@ -3,7 +3,7 @@ const nextBtn = document.getElementById('nextBtn');
 const headerText = document.getElementById('headerText');
 const fillerText = document.getElementById('fillerText');
 const backBtn = document.getElementById('backBtn');
-
+// Back button text is never going to change
 backBtn.textContent = 'Back';
 
 const pageLayout = {
@@ -23,6 +23,7 @@ const pageLayout = {
         divisible: '',
 }
 
+// Page will hold the values for what is displayed on the screen
 class Page {
     constructor(head, fill, nextText, nextBool = true, resetText = 'Reset', backBool = true,){
         this.headText = head;
@@ -63,7 +64,7 @@ function updatePage(){
     fillerText.innerHTML = pageLayout.pageSet[pageLayout.currPage].fillText;
     resetBtn.textContent = pageLayout.pageSet[pageLayout.currPage].resetText;
     nextBtn.textContent = pageLayout.pageSet[pageLayout.currPage].nextText;
-    
+    // Checks if the buttons should be displayed
     if(pageLayout.pageSet[pageLayout.currPage].nextBool)
         nextBtn.style.display = 'block';
     else
@@ -116,6 +117,8 @@ let page4 = new Page (
     false,
 )
 pageLayout.pageSet.push(page4);
+// End of page Creation
+
 
 updatePage();
 
@@ -123,6 +126,7 @@ updatePage();
 // Sets the divisible symbol to "read" the mind of the user
 function generateSymbols(){
     let symbolStr = '';
+    // The first symbol symIndex starts at is the divisible symbol
     let symIndex = Math.floor(Math.random() * 9);
     pageLayout.divisible = pageLayout.symbols[symIndex];
     // Populates the array of strings and gives a symbol to it
